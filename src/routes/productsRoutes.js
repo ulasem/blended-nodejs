@@ -16,24 +16,24 @@ import {
   updateProductSchema,
 } from '../validations/productsValidation.js';
 
-const router = Router();
+const productsRoutes = Router();
 
-router.get('/products', celebrate(getProductsSchema), getProducts);
-router.get(
+productsRoutes.get('/products', celebrate(getProductsSchema), getProducts);
+productsRoutes.get(
   '/products/:productId',
   celebrate(productIdParamSchema),
   getProductById,
 );
-router.post('/products', celebrate(createProductSchema), createProduct);
-router.delete(
+productsRoutes.post('/products', celebrate(createProductSchema), createProduct);
+productsRoutes.delete(
   '/products/:productId',
   celebrate(productIdParamSchema),
   deleteProduct,
 );
-router.patch(
+productsRoutes.patch(
   '/products/:productId',
   celebrate(updateProductSchema),
   updateProduct,
 );
 
-export default router;
+export default productsRoutes;
