@@ -1,39 +1,19 @@
-// src/routes/studentsRoutes.js
-
 import { Router } from 'express';
 import { celebrate } from 'celebrate';
 import {
-  getProducts,
+  getAllProducts,
   getProductById,
   createProduct,
   deleteProduct,
   updateProduct,
 } from '../controllers/productsController.js';
-import {
-  createProductSchema,
-  getProductsSchema,
-  productIdParamSchema,
-  updateProductSchema,
-} from '../validations/productsValidation.js';
 
 const productsRoutes = Router();
 
-productsRoutes.get('/products', celebrate(getProductsSchema), getProducts);
-productsRoutes.get(
-  '/products/:productId',
-  celebrate(productIdParamSchema),
-  getProductById,
-);
-productsRoutes.post('/products', celebrate(createProductSchema), createProduct);
-productsRoutes.delete(
-  '/products/:productId',
-  celebrate(productIdParamSchema),
-  deleteProduct,
-);
-productsRoutes.patch(
-  '/products/:productId',
-  celebrate(updateProductSchema),
-  updateProduct,
-);
+productsRoutes.get('/products', getAllProducts);
+productsRoutes.get('/products/:productId', getProductById);
+productsRoutes.post('/products', createProduct);
+productsRoutes.delete('/products/:productId', deleteProduct);
+productsRoutes.patch('/products/:productId', updateProduct);
 
 export default productsRoutes;

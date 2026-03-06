@@ -1,5 +1,5 @@
-import { Product } from '../db/models/Product.js';
 import createHttpError from 'http-errors';
+import { Product } from '../models/product.js';
 
 export const getAllProducts = async (req, res, next) => {
   try {
